@@ -18,6 +18,9 @@ class BrowsePage extends BasePage {
     this.deleteEmptyFoldersCheckbox = page.getByLabel('Delete empty folders');
     this.dataAccessOption = page.getByRole('option', { name: 'Data Access' });
     this.createTaskButton = page.getByRole('button', { name: 'Create Task' });
+    this.clickHierarchyObject = page.getByRole('treeitem', { name: 'Objects' }).getByRole('button');
+    this.clickHierarchyServer = page.getByRole('treeitem', { name: 'Server', exact: true }).getByRole('button');
+    this.clickSubscriptionTag = page.getByText('SetSubscriptionDurable');
   }
 
   async createTask(taskName) {
@@ -48,6 +51,13 @@ class BrowsePage extends BasePage {
   async cancelBrowsing() {
     //await this.clickElement(this.browsingText);
     await this.clickElement(this.cancelButton);
+  }
+
+  async expandSelectTag(){
+    await this.clickElement(this.clickHierarchyObject);
+    await this.clickElement(this.clickHierarchyServer);
+    await this.clickElement(this.clickSubscriptionTag);
+
   }
 }
 
