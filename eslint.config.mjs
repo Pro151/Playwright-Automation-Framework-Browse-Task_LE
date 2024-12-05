@@ -1,17 +1,10 @@
+import globals from "globals";
+import pluginJs from "@eslint/js";
+
+
+/** @type {import('eslint').Linter.Config[]} */
 export default [
-  {
-    ignores: ["node_modules/**"],
-  },
-  {
-    files: ["**/*.js", "**/*.ts"],
-    languageOptions: {
-      ecmaVersion: "latest",
-    },
-    plugins: {
-      playwright: require("eslint-plugin-playwright"),
-    },
-    rules: {
-      "playwright/no-focused-tests": "error",
-    },
-  },
+  {files: ["**/*.js"], languageOptions: {sourceType: "script"}},
+  {languageOptions: { globals: globals.browser }},
+  pluginJs.configs.recommended,
 ];
