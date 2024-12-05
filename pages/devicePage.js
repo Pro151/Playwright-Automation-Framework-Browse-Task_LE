@@ -17,17 +17,6 @@ class DevicePage extends BasePage {
     this.createDeviceButton = page.getByRole('button', { name: 'Create Device' });
     this.browseLink = page.getByRole('link', { name: 'Browse' });
 
-    // Additional locators
-    this.createNewTask = page.locator('button').filter({ hasText: /^add$/ });
-    this.taskNameInput = page.getByPlaceholder('Task name');
-    this.menuButton = page.locator('button').filter({ hasText: 'menu' });
-    this.manageTagsMenuItem = page.getByRole('menuitem', { name: 'Manage Tags' });
-    this.inProgressText = page.getByText('In Progress');
-    this.browsingText = page.getByText('Browsing...');
-    this.cancelButton = page.locator('button').filter({ hasText: 'cancel' });
-    this.deleteEmptyFoldersCheckbox = page.getByLabel('Delete empty folders');
-    this.dataAccessOption = page.getByRole('option', { name: 'Data Access' });
-    this.createTaskButton = page.getByRole('button', { name: 'Create Task' });
   }
 
   async navigateToDevices() {
@@ -51,37 +40,10 @@ class DevicePage extends BasePage {
     await this.clickElement(this.createDeviceButton);
   }
 
-  async createTask(taskName) {
-    await this.clickElement(this.createNewTask);
-    await this.clickElement(this.taskNameInput);
-    //await this.taskNameInput.press('ControlOrMeta+a');
-    await this.taskNameInput.fill(taskName);
-    //await this.taskNameInput.press('ArrowRight');
-    await this.clickElement(this.createTaskButton);
-  }
-
-  async manageTags() {
-    await this.clickElement(this.menuButton);
-    await this.clickElement(this.manageTagsMenuItem);
-
-  }
-
-  async toggleDeleteEmptyFolders(value) {
-    if (value) {
-      await this.deleteEmptyFoldersCheckbox.check();
-    } else {
-      await this.deleteEmptyFoldersCheckbox.uncheck();
-    }
-  }
-
   async verifyDevice() {
     await this.clickElement(this.browseLink);
   }
 
-  async cancelBrowsing() {
-    await this.clickElement(this.browsingText);
-    await this.clickElement(this.cancelButton);
-  }
 }
 
 module.exports = DevicePage;

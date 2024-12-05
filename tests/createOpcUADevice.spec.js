@@ -2,6 +2,7 @@ const{test}= require('@playwright/test');
 const { expect } = require('../playwright.config');
 const LoginPage = require('../pages/loginPage');
 const DevicePage = require('../pages/devicePage');
+const BrowsePage = require('../pages/browsePage');
 const { generateRandomId } = require('../utils/helpers');
 const { generateRandomName } = require('../utils/helpers');
 //const { only } = require('node:test');
@@ -29,6 +30,7 @@ test('Create OPC UA Device', async ({ page }) => {
   test('Create and Manage Task', async ({ page }) => {
     const loginPage = new LoginPage(page);
     const devicePage = new DevicePage(page);
+    const browsePage = new BrowsePage(page);
   
     // Step 1: Login
     await loginPage.navigateTo('/');
@@ -40,14 +42,14 @@ test('Create OPC UA Device', async ({ page }) => {
   
     // Step 3: Create Task
     const taskName = `TestOpcAutoTask${generateRandomName()}`;
-    await devicePage.createTask(taskName);
+    await browsePage.createTask(taskName);
     await page.waitForTimeout(1000);
 
     
     // Step 4: Manage Tags
-    await devicePage.manageTags();
-    await page.waitForTimeout(1000);
+    await browsePage.manageTags();
+    await page.waitForTimeout(2000);
   
-    // Cancel Browsing
-    await devicePage.cancelBrowsing();
+    // Step 5: Cancel Browsing
+    await browsePage.cancelBrowsing();
   });
