@@ -54,7 +54,7 @@ test('Create and Manage Task', async ({ page }) => {
     await page.waitForTimeout(1000); // Ensure expand and selection logic is implemented in `expandSelectTag`
 });
 
-test.only('Select Tag aAand Add to Cart', async ({ page }) => {
+test('Select Tag aAand Add to Cart', async ({ page }) => {
     const loginPage = new LoginPage(page);
     const devicePage = new DevicePage(page);
     const browsePage = new BrowsePage(page);
