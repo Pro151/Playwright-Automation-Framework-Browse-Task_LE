@@ -26,6 +26,8 @@ class BasePage {
       await locator.press(key);
       await this.page.waitForTimeout(500);
     }
+
+
   }
   
   module.exports = BasePage;

@@ -53,3 +53,28 @@ test('Create and Manage Task', async ({ page }) => {
     await browsePage.expandSelectTag();
     await page.waitForTimeout(1000); // Ensure expand and selection logic is implemented in `expandSelectTag`
 });
+
+test.only('Select Tag aAand Add to Cart', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+    const devicePage = new DevicePage(page);
+    const browsePage = new BrowsePage(page);
+
+    // Step 1: Login
+    await loginPage.navigateTo('/');
+    await loginPage.login('admin', 'Litmus@1'); // Make sure the credentials are correct
+
+    // Step 2: Navigate to Devices
+    await devicePage.navigateToDevices();
+
+    // Step 3: Navigate to browse sub-menu
+    await devicePage.navigateToBrowse();
+
+    //Step 4: Expand the hierarchy
+    await browsePage.expandSelectTag();
+    await page.waitForTimeout(1000);
+
+    //Step 5: Selec tag and Add to cart
+    await browsePage.selectTagAddToCart();
+    await page.waitForTimeout(1000);
+
+});

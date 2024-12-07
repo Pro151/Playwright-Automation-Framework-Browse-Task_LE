@@ -22,10 +22,7 @@ const config = {
     browserName : 'chromium',
     headless : false,
     trace : 'on',//off,on
-    
-    
-    
-  },
+    },
 
 
 };

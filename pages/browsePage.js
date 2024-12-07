@@ -21,6 +21,9 @@ class BrowsePage extends BasePage {
     this.clickHierarchyObject = page.getByRole('treeitem', { name: 'Objects' }).getByRole('button');
     this.clickHierarchyServer = page.getByRole('treeitem', { name: 'Server', exact: true }).getByRole('button');
     this.clickSubscriptionTag = page.getByText('SetSubscriptionDurable');
+    this.selectTags = page.locator('#ag-93-input');
+    this.addToCart = page.getByRole('menuitem', { name: 'Add To Cart' });
+    this.openCart = page.locator("mat-icon[aria-label='cart']");
   }
 
   async createTask(taskName) {
@@ -57,6 +60,15 @@ class BrowsePage extends BasePage {
     await this.clickElement(this.clickHierarchyObject);
     await this.clickElement(this.clickHierarchyServer);
     await this.clickElement(this.clickSubscriptionTag);
+
+  }
+
+  async selectTagAddToCart(){
+    await this.clickElement(this.selectTags);
+    await this.clickElement(this.menuButton);
+    await this.clickElement(this.addToCart);
+    //await page.waitForTimeout(1000);
+    await this.clickElement(this.openCart);
 
   }
 }
