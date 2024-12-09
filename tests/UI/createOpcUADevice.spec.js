@@ -1,8 +1,8 @@
 const { test, expect } = require('@playwright/test'); // Fixed import for `expect` to use Playwright's built-in `expect`
-const LoginPage = require('../pages/loginPage'); // Ensure the file paths are correct
-const DevicePage = require('../pages/devicePage');
-const BrowsePage = require('../pages/browsePage');
-const { generateRandomId, generateRandomName } = require('../utils/helpers'); // Merged imports for helper methods
+const LoginPage = require('../../pages/loginPage'); // Ensure the file paths are correct
+const DevicePage = require('../../pages/devicePage');
+const BrowsePage = require('../../pages/browsePage');
+const { generateRandomId, generateRandomName } = require('../../utils/helpers'); // Merged imports for helper methods
 
 test('Create OPC UA Device', async ({ page }) => {
     const loginPage = new LoginPage(page);
