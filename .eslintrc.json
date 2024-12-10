@@ -1,21 +1,37 @@
 {
-    "env": {
-      "browser": true,
-      "es2021": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:playwright/recommended"
+  "root": true,
+  "plugins": ["cypress"],
+  "extends": ["eslint:recommended", "plugin:cypress/recommended"],
+  "env": {
+    "es2023": true,
+    "node": true
+  },
+  "rules": {
+    "camelcase": ["error", { "properties": "always" }],
+    "comma-dangle": "error",
+    "curly": "error",
+    "eqeqeq": "error",
+    "linebreak-style": ["error", "unix"],
+    "no-cond-assign": "error",
+    "no-console": "error",
+    "no-multi-spaces": "error",
+    "no-trailing-spaces": "error",
+    "no-unused-vars": ["error", { "vars": "all", "args": "after-used" }],
+    "quotes": [
+      "error",
+      "single",
+      { "avoidEscape": true, "allowTemplateLiterals": true }
     ],
-    "parserOptions": {
-      "ecmaVersion": 12,
-      "sourceType": "module"
-    },
-    "plugins": ["playwright"],
-    "rules": {
-      // Add any custom rules here
-      "no-unused-vars": "warn",
-      "semi": ["error", "always"]
+    "semi": "error",
+    "cypress/unsafe-to-chain-command": "off"
+  },
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "impliedStrict": true
     }
   }
-  
+}
